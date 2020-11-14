@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    /* 
+    自定义call函数
+    */
+
+    function myCall(fn, obj, ...args) {
+      // 处理obj的特殊情况
+      if (obj===null || obj===undefined) {
+        obj = window
+      }
+
+      // 给obj添加一个临时方法, 方法的函数就是fn
+      obj.tempFn = fn
+      // 调用这个方法
+      const result = obj.tempFn(...args)
+      // 删除临时方法
+      delete obj.tempFn
+      // 返回方法执行的结果
+      return result
+    }
+
+    
+
+    Function.prototype.call = function (obj, ...args) {
+      console.log('call()')
+
+      // this(...args)  // 函数内部的this有问题
+
+      // 处理obj的特殊情况
+      if (obj===null || obj===undefined) {
+        obj = window
+      }
+
+      // 给obj添加一个临时方法, 方法的函数就是this
+      obj.tempFn = this
+      // 调用这个方法
+      const result = obj.tempFn(...args)
+      // 删除临时方法
+      delete obj.tempFn
+      // 返回方法执行的结果
+      return result
+    }
+
+     /* 
+    自定义函数对象的apply方法
+    */
+    Function.prototype.apply = function (obj, args) {
+      console.log('apply()')
+
+      // this(...args)  // 函数内部的this有问题
+
+      // 处理obj的特殊情况
+      if (obj===null || obj===undefined) {
+        obj = window
+      }
+
+      // 给obj添加一个临时方法, 方法的函数就是this
+      obj.tempFn = this
+      // 调用这个方法
+      const result = obj.tempFn(...args)
+      // 删除临时方法
+      delete obj.tempFn
+      // 返回方法执行的结果
+      return result
+    }
+
+     /* 
+    自定义函数对象的bind方法
+    */
+    Function.prototype.bind = function (obj, ...args) {
+      console.log('bind()')
+
+      return (...args2) => {
+        return this.call(obj, ...args, ...args2)
+      }      
+    }
+
+    var m = 1
+
+    function fn(a, b) {
+      console.log(a, b, this.m, this)
+      return a + b
+    }
+
+    const obj = {
+      m: 2
+    }
+
+
+    myCall(fn, obj, 'a', 'b')
+    
+    console.log(fn.call(obj, 'aaa', 'bbb'))
+    fn.call(undefined, 'aa', 'bb')
+    console.log(fn.apply(obj, ['aaa', 'bbb']))
+    fn.apply(undefined, ['aa', 'bb'])
+
+    fn.bind(obj)(3, 4)
+    fn.bind(obj, 5)(3, 4)
+    fn.bind(obj, 5, 6)(3, 4)
+    fn.bind(obj, 5, 6, 7)(3, 4)
+
+
+
+
+  </script>
+</body>
+</html>
