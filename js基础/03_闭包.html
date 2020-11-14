@@ -17,8 +17,20 @@
       return fn2;
     }
     var f = fn1();
+
     f();
     f();
+    f = null
+
+
+    function showDelay(msg, time) {
+      setTimeout(() => {
+        alert(msg)
+      }, time);
+    }
+
+    showDelay('abc', 1000)
+    clearTimeout()
   </script>
 </body>
 </html>
