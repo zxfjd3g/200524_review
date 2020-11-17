@@ -7,7 +7,7 @@
     <!-- <component :is="currentComp" /> -->
 
     <!-- 有缓存 -->
-   <keep-alive>
+   <keep-alive :include="['Home', 'Posts']">
     <component :is="currentComp"/>
   </keep-alive>
  
@@ -35,11 +35,11 @@
   const Home = () => import('./components/Home')
   const Posts = () => import('./components/Posts')
 
-  setTimeout(() => {
-    import('./components/AsyncComp').then(module => {
-      console.log(module)
-    })
-  }, 2000);
+  // setTimeout(() => {
+  //   import('./components/AsyncComp').then(module => {
+  //     console.log(module)
+  //   })
+  // }, 2000);
 
 
   export default {
