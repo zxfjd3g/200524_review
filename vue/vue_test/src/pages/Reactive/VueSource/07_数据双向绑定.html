@@ -7,6 +7,7 @@
 <body>
     <div id="test">
       <input type="text" v-model="msg"/>
+      <input type="text" :value="msg" @input="msg = $event.target.value"/>
       <p>{{msg}}</p>
     </div>
   

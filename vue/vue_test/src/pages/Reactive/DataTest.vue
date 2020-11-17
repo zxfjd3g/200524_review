@@ -7,7 +7,11 @@
 
     <button @click="msg1 += '--'">更新msg1</button>
     <button @click="msg2 += '++'">更新msg2</button>
+    <button @click="update">更新1&2</button>
+
     <button @click="$emit('update:msg3', msg3+'~~')">更新msg3</button>
+    <br>
+    <button @click="msg4.name += '----'">{{msg4}}---更新msg4</button>
     <br>
     <br>
     <br>
@@ -18,7 +22,7 @@
 <script>
 export default {
   name: 'DataTest',
-  props: ['msg3'], // 是
+  props: ['msg3', 'msg4'], // 是
   data () {
     this.msg2 = 'ABC' // 不是
     return {
