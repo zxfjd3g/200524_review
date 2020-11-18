@@ -14,6 +14,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import store from '@/store'
 import router from '@/router'
+import { message } from "element-ui";
 
 NProgress.configure({ showSpinner: false }) // 隐藏右侧的旋转进度条
 

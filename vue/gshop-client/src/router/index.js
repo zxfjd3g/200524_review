@@ -82,10 +82,12 @@ router.beforeEach(async (to, from, next) => {
   } catch (error) {
     // 重置token
     await store.dispatch('user/logout')
-    // 提示错误信息
-    Message.error(error.message || 'Has Error')
-    // 跳转到登陆页面, 并携带原本要跳转的路由路径, 用于登陆成功后跳转
-    next(`/login?redirect=${to.path}`)
+    if (needCheck) {
+      // 提示错误信息
+      Message.error(error.message || 'Has Error')
+      // 跳转到登陆页面, 并携带原本要跳转的路由路径, 用于登陆成功后跳转
+      next(`/login?redirect=${to.path}`)
+    }
   }
 })
 

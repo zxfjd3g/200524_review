@@ -9,8 +9,10 @@
   <a href="#/test1">test1</a><br>
   <button onclick="location.hash = '#/test2'">test2</button><br>
 
-  <button onclick="pushState()">pushState</button> <br>
-  <button onclick="replaceState()">replaceState</button> <br>
+  <button onclick="pushState('test3')">pushState</button> <br>
+  <button onclick="pushState('test4')">pushState</button> <br>
+  <button onclick="replaceState('test5')">replaceState</button> <br>
+  <button onclick="replaceState('test6')">replaceState</button> <br>
   <button onclick="readState()">readState</button> <br>
   
   <script>
@@ -23,12 +25,12 @@
     }
 
     // history
-    function pushState () {
-      history.pushState({'name': 'tom' + Date.now()}, '', 'test3')
+    function pushState (path) {
+      history.pushState({'name': 'tom' + Date.now()}, '', path)
     }
 
-    function replaceState () {
-      history.replaceState({'age': 1}, '', 'test4')
+    function replaceState (path) {
+      history.replaceState({'age': 1}, '', path)
     }
 
     function readState () {
