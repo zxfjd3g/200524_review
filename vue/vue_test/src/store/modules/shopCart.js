@@ -1,6 +1,6 @@
 const state = {
   // 页面加载初始化时执行
-  cartList: [],
+  cartList: JSON.parse(sessionStorage.getItem('CART_LIST_KEY')) || [],
   xxx: {}
 }
 const mutations = {
@@ -23,7 +23,7 @@ const mutations = {
     */
     setTimeout(() => {
       const item = {
-        id: 1,
+        id: Date.now(),
         name: 'AA',
         price: 1000,
         count: 2
@@ -35,7 +35,11 @@ const mutations = {
 const actions = {
 
   getCartList ({commit, state}, isReload) {
+    if (state.cartList.length>0 && !isReload) {
+      return
+    }
     console.log('异步请求获取列表数据')
+
     setTimeout(() => {
       const cartList = [
         {

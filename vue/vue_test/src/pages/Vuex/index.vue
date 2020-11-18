@@ -15,7 +15,20 @@
     name: 'vuexTest',
 
     mounted () {
-     this.$store.dispatch('getCartList')
+      this.$store.dispatch('getCartList')
+
+      window.addEventListener('beforeunload', this.onUnload)
+    },
+
+    beforeDestroy () {
+      window.removeEventListener('beforeunload', this.onUnload)
+    },
+
+    methods: {
+       onUnload () {
+        sessionStorage.setItem('CART_LIST_KEY', 
+          JSON.stringify(this.$store.state.shopCart.cartList))
+      }
     }
 	}
 </script>
