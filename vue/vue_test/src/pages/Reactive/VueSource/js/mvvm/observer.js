@@ -62,6 +62,7 @@ var uid = 0;
 function Dep() { // 对就一个属性
     this.id = uid++;
     this.subs = []; // 保存watcher的数组 ==> 当属性在多个表达式使用时有多个watcher
+    // subscribers
 }
 
 Dep.prototype = {
