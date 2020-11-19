@@ -33,7 +33,7 @@ const mutations = {
 
 const actions = {
 
-  toggleSideBar({ commit }) {
+  toggleSideBar({ commit }) {  // 'app/toggleSideBar'
     commit('TOGGLE_SIDEBAR')
   },
 

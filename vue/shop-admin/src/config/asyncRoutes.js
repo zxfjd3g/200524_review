@@ -76,6 +76,7 @@ export default {
     path: 'scoped',
     component: Scoped
   },
+  
   TestList: {
     path: 'list',
     component: TestList

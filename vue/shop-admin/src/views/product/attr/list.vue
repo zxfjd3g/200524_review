@@ -226,7 +226,7 @@ export default {
     */
     showUpdate (attr) {
       // 保存当前属性对象
-      // this.attr = attr  // 问题: 属性名称修改不能取消   {list: [xxxx]}
+      this.attr = attr  // 问题: 属性名称修改不能取消   {list: [xxxx]}
      
       this.attr = {...attr} // 使用浅拷贝解决上面的问题 
       /* 

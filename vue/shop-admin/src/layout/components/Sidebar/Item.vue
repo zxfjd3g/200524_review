@@ -36,7 +36,7 @@ export default {
 
     // 如果传入的title, 添加一个span标签显示
     if (title) {
-      vnodes.push(<span slot='title'>{(title)}</span>)
+      vnodes.push(<span slot='title'>{title}</span>)
     }
     return vnodes
   }
