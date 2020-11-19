@@ -20,7 +20,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
       },
     },
     默认情况下就能做一些css兼容性处理了，但是不够全
-    所以，还需要再package.json中配置
+    所以，还需要在package.json中配置
       文档：https://github.com/browserslist/browserslist
       "browserslist": {
         "development": [ 
