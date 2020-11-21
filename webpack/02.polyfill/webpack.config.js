@@ -39,11 +39,15 @@ module.exports = {
 
   mode: "development",
   
-  entry: "./src/index.js",
+  entry: './src/index.js',
+  // entry: {
+  //   a: "./src/index.js",
+  //   b: './src/other.js'
+  // },
   
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "./js/built.js",
+    filename: "./js/[name].[contenthash:7].js",
   },
   
   module: {
@@ -76,7 +80,7 @@ module.exports = {
                 },
                 // 指定兼容性做到什么程度
                 // targets: { 
-                //   ie: 8,
+                //   ie: 9,
                 //   chrome: 60,
                 //   firefox: 50,
                 //   safari: 10,
